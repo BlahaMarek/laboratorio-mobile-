@@ -1,0 +1,88 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Úlohy
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="logoutUser()">
+        <ion-icon slot="icon-only" name="power-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="pageBg" [fullscreen]="true">
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Oznamy</ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <ul class="report">
+        <li *ngFor="let report of taskSvc.$reports | async">
+          <ion-icon class="pad-r" name="warning-outline"></ion-icon> {{report.desc}}
+        </li>
+      </ul>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Moje Úlohy</ion-card-subtitle>
+      <ion-icon (click)="addMyTask()" class="addTask" name="add-outline"></ion-icon>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <ul class="report">
+        <li *ngFor="let report of taskSvc.$myTasks | async">
+          <ion-icon class="pad-r" color="succes" name="pricetag-outline"></ion-icon> 
+          <span [ngClass]="{'line-cross':  report.done}" >
+            {{report.desc}}
+          </span>
+          <ion-icon *ngIf="!report.done" class="doneMyTask" (click)="doneItem(report)" name="checkbox-outline"></ion-icon>
+          <ion-icon class="removeMyTask" (click)="removeItem(report)" name="close-circle-outline"></ion-icon>
+        </li>
+      </ul>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Skupnové Úlohy</ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <ul class="report">
+        <li *ngFor="let report of taskSvc.$labTasks | async">
+          <ion-icon class="pad-r" color="succes" name="pricetag-outline"> </ion-icon>{{report.desc}} 
+        </li>
+      </ul>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Kultivačný kalendár</ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <ul>
+        <li *ngFor="let item of calendarSvc.$myCalendar | async"  >
+          <div [class]="item.badge + ' wrapper'" >
+            <div class="desc" (click)="openCalendarItem(item)">
+              <span>
+                {{formatString(item.micro)}}
+              </span>
+            </div>
+            <div class="delete" (click)="done(item._id)"> 
+              
+              <ion-icon class="doneIcon" name="checkbox-outline"></ion-icon>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

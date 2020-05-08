@@ -1,0 +1,32 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Chat
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="logoutUser()">
+        <ion-icon slot="icon-only" name="power-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="pageBg" [fullscreen]="true">
+  
+  <div *ngFor="let collaborator of this.userSvc.$myColaborators | async">
+    <ion-card (click)="openChatModal(collaborator)">
+      <ion-card-content>
+        <div class="wrapper" >
+          <div class="avatar">
+            <ion-icon class="userIcon" name="person-outline"></ion-icon>
+          </div>
+          <div class="content">
+            <h1>{{collaborator.login}}</h1>
+            <p>Toto si mi napisala ...</p>
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+</ion-content>

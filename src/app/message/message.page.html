@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Chat: <b>{{person.login}}</b></ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">
+        <ion-icon slot="icon-only" name="chevron-back-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="modalWrapper">
+    <div>
+      <div #scrollMe  *ngIf="!!messages" class="messageWrap">
+
+        <div *ngFor="let message of messages">
+          <div class="chatWrap clearfix" [ngClass]="{'me': message.from == this.userSvc.user['user'].login}">
+            <p class="from">{{message.from}}</p>
+            <p class="date">{{getFormatedDate(message.timestamp)}}</p>
+
+            <p class="content">
+              {{message.message}}
+            </p>
+
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <div class="sendWrapper">
+    <input type="text" [(ngModel)]="messageText">
+    <ion-icon class="send" (click)="send()" name="send-outline"></ion-icon>
+  </div>
+</ion-content>

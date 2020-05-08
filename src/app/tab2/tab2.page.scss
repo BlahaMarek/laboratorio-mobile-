@@ -1,0 +1,42 @@
+.wrapper {
+    height: 40px;
+    display: flex;
+    margin: 5px 0;
+  
+    .avatar {
+      flex-grow: 1;
+  
+      text-align: center;
+  
+      i {
+        line-height: 40px;
+        font-size: 2em;
+      }
+    }
+    .content {
+      flex-grow: 5;
+  
+      h1 {
+        margin: 0;
+        font-size: 0.9em;
+        padding-top: 3px;
+        font-weight: 400;
+        line-height: 18px;
+      }
+      p {
+        margin: 0;
+        font-size: 0.7em;
+        font-weight: 100;
+      }
+    }
+  }
+
+  ion-card-content {
+      padding: 0;
+  }
+
+  .userIcon {
+    font-size: 25px;
+    position: relative;
+    top: 8px;
+  }

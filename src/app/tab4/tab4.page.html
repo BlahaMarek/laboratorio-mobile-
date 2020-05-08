@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Materiály</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="logoutUser()">
+        <ion-icon slot="icon-only" name="power-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="pageBg" [fullscreen]="true">
+  <div class="videowrap">
+    <span class="videoTitle">Video 1</span>
+    <iframe class="video" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
+  </div>
+  <div class="videowrap">
+    <span class="videoTitle">Video 2</span>
+    <iframe class="video" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
+  </div>
+  
+</ion-content>

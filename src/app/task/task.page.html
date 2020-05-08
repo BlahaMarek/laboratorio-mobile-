@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Nová úloha</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">
+        <ion-icon  slot="icon-only" name="chevron-back-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label position="floating">Záznam</ion-label>
+    <ion-input [(ngModel)]="taskItem"></ion-input>
+  </ion-item>
+  <ion-button class="bottom" (click)="save()" expand="block" fill="outline" color="success">Uložiť</ion-button>
+</ion-content>

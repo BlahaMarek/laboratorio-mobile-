@@ -1,0 +1,8 @@
+<div class="project-item" *ngFor="let project of projects">
+    <ion-card>
+        <ion-card-content>
+            <!-- <app-project-item [project]="project"></app-project-item> -->
+            <div (click)="concreteProject(project._id)">{{project.name}}</div>
+        </ion-card-content>
+    </ion-card>
+</div>

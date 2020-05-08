@@ -1,0 +1,14 @@
+<div *ngIf="!!project">
+  <div class="projectDate" (click)="showDataByDate(date)" *ngFor="let date of datesArray">
+    <ion-card>
+      <ion-card-content>
+        <ion-icon class="dateIcon" name="calendar-outline"></ion-icon>
+        <span class="date">{{date}}</span>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+</div>
+<div class="wrapper" *ngIf="!project">
+  <ion-spinner></ion-spinner>
+</div>

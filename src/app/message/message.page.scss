@@ -1,0 +1,82 @@
+.modalWrapper {
+    position: relative;
+    width: 100%;
+    padding: 10px;
+}
+.sendWrapper {
+    width: 100%;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    padding: 15px;
+    input {
+        width: 92%;
+        box-sizing: border-box;
+        padding: 5px;
+        border: none;
+        outline: none;
+        border-radius: 5px;
+        background-color: #eee;
+    }
+    .send {
+        padding: 0;
+        margin: 0;
+        right: 6px;
+        position: absolute;
+        bottom: 17px;
+        font-size: 25px;
+        color: #4267b2;
+    }
+}
+
+.messageWrap {
+    overflow: auto;
+    height: 80vh;
+}
+
+.chatWrap {
+    margin-right: 10px;
+    .from {
+        margin: 0;
+        font-size: 10px;
+        line-height: 10px;
+    }
+
+    .date {
+        margin: 0;
+        font-size: 8px;
+        line-height: 12px;
+    }
+}
+
+.chatWrap.me {
+    text-align: right;
+}
+
+.chatWrap {
+    .content {
+        background-color: rebeccapurple;
+        float: left;
+        width: fit-content;
+        margin: 5px 0 15px 0;
+    }
+}
+
+.me {
+    .content {
+        background-color: rosybrown !important;
+        float: right !important;
+        width: fit-content !important;
+    }
+}
+
+.content {
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+  }

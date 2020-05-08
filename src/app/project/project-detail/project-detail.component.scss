@@ -1,0 +1,51 @@
+@import '../../../theme/variables';
+
+.wrapper {
+    text-align: center;
+    margin-top: 40vh;
+    ion-spinner {
+        color: royalblue;
+    }
+}
+
+.name {
+    width: 100%;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.date {
+    width: 100%;
+    display: inline-block;
+    font-size: 10px;
+}
+.basicInfo {
+    line-height: 12px;
+}
+.me {
+    text-align: right;
+    color: #189fbe !important;
+}
+
+.meWrap {
+    background-color: $box1-soft !important;
+    padding: 10px;
+    hr {
+        border: 0.1px solid #189fbe !important;
+    }
+}
+
+.normalWrap {
+    padding: 10px;
+    margin: 10px 0;
+}
+.total {
+    background-color: $box2-soft;
+    hr {
+        border: 0.1px solid #fd7b5f;
+    }
+    .basicInfo {
+        color: #fd7b5f;
+    }
+}

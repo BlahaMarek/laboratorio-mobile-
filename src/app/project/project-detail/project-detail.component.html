@@ -1,0 +1,21 @@
+<div *ngIf="!!project">
+    <div class="total" *ngFor="let comment of project.workDates[projectDate].desc">
+        <div class="normalWrap" [class.meWrap]="this.userSvc.user['user'].login == comment.person">
+            <div class="basicInfo" [class.me]="this.userSvc.user['user'].login == comment.person">
+                <span class="name">
+                    {{comment.person}}
+                </span>
+                <span class="date">
+                    {{formatDate(comment.date)}}
+                </span>
+            </div>
+            <hr>
+            <div [innerHtml]="comment.comentBody"></div>
+        </div>
+    </div> 
+
+    <!-- <app-experiment-list [project]="project" [id]="id" [projectDate]="projectDate"></app-experiment-list> -->
+</div>
+<div class="wrapper" *ngIf="!project">
+  <ion-spinner></ion-spinner>
+</div>
