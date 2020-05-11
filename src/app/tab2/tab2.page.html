@@ -22,11 +22,24 @@
           </div>
           <div class="content">
             <h1>{{collaborator.login}}</h1>
-            <p>Toto si mi napisala ...</p>
+            <p>Zobrazte správy</p>
           </div>
         </div>
       </ion-card-content>
     </ion-card>
   </div>
 
+  <ion-card (click)="openChatModal()">
+    <ion-card-content>
+      <div class="wrapper" >
+        <div class="avatar">
+          <ion-icon class="userIcon" name="people-outline"></ion-icon>
+        </div>
+        <div class="content">
+          <h1>Skupina</h1>
+          <p>Zobrazte správy</p>
+        </div>
+      </div>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

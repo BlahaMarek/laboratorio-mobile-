@@ -52,6 +52,10 @@ export class ProjectService {
     return this.http.post<any>(this.baseUrl + _id + '/experiment', {experiment, date});
   }
 
+  postPhoto(_id, photo, date) {
+    return this.http.post<any>(this.baseUrl + _id + '/photo', {photo, date});
+  }
+
 
   // CALIBRATIONS
   experimentCalibration = "";

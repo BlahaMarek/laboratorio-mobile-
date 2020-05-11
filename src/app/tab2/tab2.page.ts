@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../_shared/services/user.service';
 import { Router } from '@angular/router';
-import { ModalController } from '@ionic/angular';
+import { ModalController, ToastController } from '@ionic/angular';
 import { MessagePage } from '../message/message.page';
+import { MessagingService } from '../_shared/services/messaging.service';
 
 @Component({
   selector: 'app-tab2',
@@ -17,7 +18,7 @@ export class Tab2Page implements OnInit{
     this.userSvc.loadMyColaborators();
   }
   
-  openChatModal(person) {
+  openChatModal(person=null) {
     this.presentModal(person);
   }
 

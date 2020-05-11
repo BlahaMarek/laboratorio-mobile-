@@ -19,11 +19,28 @@ export class MessagePage implements OnInit {
   
 
   ngOnInit() {
-    console.log(this.person);
-    this.messageSvc.getMessages(this.userSvc.user['user'].login, this.person.login).subscribe(data => {
-      this.messages = data;
-      this.scrollToBottom();
-    })
+    if (!!this.person) {
+      this.messageSvc.getMessages(this.userSvc.user['user'].login, this.person.login).subscribe(data => {
+        this.messages = data;
+      })
+
+      this.messageSvc.socket.on('private_chat', (data) => {
+        var username = data.username;
+        var message = data.message;
+        if (this.person.login == username) {
+          this.messages.push(message);
+        }
+      });
+    } else {
+      this.messageSvc.getGroupMessages().subscribe(data => {
+        this.messages = data;
+      })
+      
+      this.messageSvc.socket.on('group', (msg) => {
+        this.messages.push(msg);
+      });
+    }
+    this.scrollToBottom();
   }
 
   ngAfterViewChecked() {        
@@ -44,21 +61,35 @@ export class MessagePage implements OnInit {
     if (this.messageText.length == 0) {
       return;
     }
-
     const newMessage = new Message();
-    newMessage.from = this.userSvc.user['user'].login;
-    newMessage.to = this.person.login;
     newMessage.message = this.messageText;
+    newMessage.from = this.userSvc.user['user'].login;
 
+    if (!!this.person) {
+      newMessage.to = this.person.login;
+      this.messageSvc.postMessage(newMessage).subscribe(data => {
+        this.messageSvc.socket.emit('private_chat', {
+          to: this.person.login,
+          message: newMessage
+        });
+      });
+    } else {
+      newMessage.to = 'group';
+      this.messageSvc.postMessage(newMessage).subscribe(data => {
+        this.messageSvc.socket.emit('group', newMessage);
+      });
+    }
+
+    this.messages.push(newMessage);
     this.messageText = "";
-
-    this.messageSvc.postMessage(newMessage).subscribe(data => {
-      this.messages.push(data);
-    });
   }
 
   getFormatedDate(date) {
     const newDate = new Date(date).toLocaleString('en-GB');
     return newDate;
+  }
+
+  get getName() {
+    return !!this.person ? this.person.login : 'Skupina';
   }
 }

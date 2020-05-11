@@ -12,10 +12,25 @@
             <hr>
             <div [innerHtml]="comment.comentBody"></div>
         </div>
-    </div> 
+    </div>
 
     <!-- <app-experiment-list [project]="project" [id]="id" [projectDate]="projectDate"></app-experiment-list> -->
+    <ion-fab>
+        <ion-fab-button (click)="takePhoto()">
+            <ion-icon name="camera"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+
+    <ion-grid>
+        <h3>Fotky</h3>
+        <ion-row>
+            <ion-col size="6" *ngFor="let photo of project.workDates[projectDate].photos; index as position">
+                <ion-img src="{{photo.photo}}"></ion-img>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
 </div>
 <div class="wrapper" *ngIf="!project">
-  <ion-spinner></ion-spinner>
+    <ion-spinner></ion-spinner>
 </div>
